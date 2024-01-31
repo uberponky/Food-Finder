@@ -11,3 +11,21 @@
 body {
   font-family: 'Lexend', sans-serif;
 }
+
+
+
+
+
+.col {
+  text-align: right;
+  }
+  .pull-right {
+  margin: 0 0 0 auto;
+  }
+
+.vertical-align-top {
+  vertical-align: top
+}
+
+
+
