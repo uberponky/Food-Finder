@@ -1,0 +1,13 @@
+/* General */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #0A2830;
+  --accent: #FF896D;
+}
+
+body {
+  font-family: 'Lexend', sans-serif;
+}
