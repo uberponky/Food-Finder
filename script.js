@@ -8,7 +8,8 @@ function searchRestaurants() {
     
     // Make a request to the SPOONACULAR API
 
-    const apiKey = "255a8a9c8426434fbef6d2926b18e54a";
+    // MM DAILY ALLOWANCE 150 const apiKey = "255a8a9c8426434fbef6d2926b18e54a";
+    const apiKey = "15b46f3111044b70a400bf923800f69e";
     const apiUrl = `https://api.spoonacular.com/food/restaurants/search?cuisine=${cuisine}&location=${location}&price=${price}&apiKey=${apiKey}`;
 
     // Make the API request
@@ -32,26 +33,44 @@ function displayResults(restaurants) {
         const address = restaurant.address;
         const displayAddress = `${address.street_addr}<br> ${address.city}<br> ${address.state} ${address.zipcode}`;
         
-        
-        //PARSE OPENING HOURS FROM local_hours.dine_in OBJECT
-        const openingHours = JSON.stringify(restaurant.local_hours.dine_in);
+     // Format opening hours
+     const openingHours = formatOpeningHours(restaurant.local_hours.dine_in);
+
+     function formatOpeningHours(openingHours) {
+        let formattedHours = "<ul>";
+       
+        for (const day in openingHours) {
+            formattedHours += `<li>${day}: ${openingHours[day]}</li>`;
+        }
+               formattedHours += "</ul>";
+        return formattedHours;
+       }
+
+     const card = `
+         <div class="card mt-3">
+             <div class="card-body">
+                 <h5 class="card-title">${restaurant.name}</h5>
+                 <p class="card-text">${displayAddress}</p>
+                 <p class="card-text">Phone Number:${restaurant.phone_number}</p>
+                 <p class="card-text">Cuisines: ${restaurant.cuisines}</p>
+                 <p class="card-text">Price Bracket: ${restaurant.dollar_signs}</p>
+                 <p class="card-text">Opening hours: ${openingHours}</p>
+             </div>
+         </div>
+     `;
 
 
-        //LAYOUT OF OUTPUT WHICH WILL DISPLAY ON HTML PAGE
-            const card = `
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <h5 class="card-title">${restaurant.name}</h5>
-                        <p class="card-text">${displayAddress}</p>
-                        <p class="card-text">Phone Number:${restaurant.phone_number}</p>
-                        <p class="card-text">Cuisines: ${restaurant.cuisines}</p>
-                        <p class="card-text">Price Bracket: ${restaurant.dollar_signs}</p>
-                        <p class="card-text">Opening hours: ${openingHours}</p>
+      // Retrieving the URL for the image
+      const imgURL = restaurant.logo_photos;
 
-                    </div>
-                </div>
-        `;
-        resultsContainer.append(card);
-    };
+      // Creating an element to hold the image
+      const image = $("<img>").attr("src", imgURL);
+
+ 
+
+     resultsContainer.append(card);
+     resultsContainer.append(image);
+     
+     
+ }
 }
-
