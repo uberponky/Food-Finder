@@ -29,3 +29,39 @@ body {
 
 
 
+.spaceR {
+  margin-right: 50px;
+}
+
+.spaceL {
+  margin-left: 50px;
+}
+
+
+
+.whiteT {
+  color: aliceblue;
+}
+
+.orange {
+  color: orange
+}
+
+
+.spaceLL {
+  margin-left: 300px;
+}
+
+.spaceLR {
+  margin-right: 300px;
+}
+
+.spaceSi {
+  margin-left: 70px;
+    margin-right: 70px;
+}
+
+.searchB {
+  color: white;
+  background-color: #FF896D;
+}
