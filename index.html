@@ -23,56 +23,95 @@
   <br/>
   <br/>
   
-  <div class="d-flex flex-row-reverse">
+  <div class="d-flex flex-row-reverse spaceR">
     <a>Link your favourites page</a>
   </div>
   
-  <!-- <div class="alert alert-info clearfix">
-    <a href="#" class="alert-link">
-      Summary:Its some description.......testtesttest
-    </a> 
-    <button type="button" class="btn btn-primary btn-lg pull-right">
-      Large button
-    </button>
-  </div> -->
-  
-  <!-- <label class="align-middle"> -->
+
     <div>
-      <div class="d-flex">
-          <img src="./images/Untitled.png"
+      <div class="d-flex spaceSi">
+          <img src="./images/Food Finder 500.png"
           width="250" 
-          height="auto" class="img-fluid pull-left" ></a>
+          height="auto" class="img-fluid" ></a>
   
-            <a class="btn btn-primary btn-lg pull-right" role="button">PlaceholderFav</a>
+            <button class="searchB pull-right" id="favourites" role="button">PlaceholderFav</button>
           </div>
     </div>
-  <!-- </label> -->
+
   
     <br/>
 
-  <nav class="navbar navbar-dark bg-dark">
+  <!-- <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <br/>
       <a class="navbar-brand">
     <h1>Search for a resturant:</h1>
-      <input type="text" class="col">
+      <input type="text" id="searcher" class="col"> -->
       
-      <a class="btn btn-primary btn-lg" role="button">Choose a cuisine</a>
-      <a class="btn btn-primary btn-lg" role="button">Choose a price</a>
-      <a class="btn btn-primary btn-lg" role="button">Search</a>
-      <br/>
+    <br/>
+
+
+      <!---needs work--->
+
+      <form class="d-flex flex-row navbar navbar-dark bg-dark">
+        <br/>
+  </form>
+
+<form id="searchForm" class="d-flex flex-row navbar navbar-dark bg-dark">
+  <br/>
+  
+          <div class="form-group spaceLL">
+              <label for="location" class="whiteT">Location:</label>
+              <input type="text" class="form-control" id="location" placeholder="Enter location">
+          </div>
+
+      <div class="form-group">
+        <label for="cuisine" class="whiteT">Cuisine Type:</label>
+        <input type="text" class="form-control" id="cuisine" placeholder="Enter cuisine type">
     </div>
-  </nav>
+      
+      <div class="form-group">
+        <label for="price" class="whiteT">Price Bracket:</label>
+        <select class="form-control" id="price">
+            <option value="">Any</option>
+            <option value="1">Cheap</option>
+            <option value="2">Moderate</option>
+            <option value="3">Expensive</option>
+        </select>
+    </div>
+
+      <button type="button" class="searchB spaceLR" onclick="searchRestaurants()">Search</button>
+
+
+</form>
+
+<form class="d-flex flex-row navbar navbar-dark bg-dark">
+      <br/>
+</form>
+
+
+      <br/>
+
+
+
+
+
+
+
+
+
+
+
 
 <br/>
 
     <div class="d-flex">
-      <a class="img-fluid pull-left" > Show results for</a>
+      <a class="img-fluid pull-left spaceL"> Show results for</a>
 
-          <a class="btn btn-primary btn-lg pull-right" role="button">PlaceholderFav</a>
+          <a class="btn btn-primary btn-lg pull-right spaceR" id="next" role="button">Next</a>
         </div>
         <div class="d-flex">
-          <a class="img-fluid pull-left" > Placeholder</a>
+          <a class="img-fluid pull-left spaceL" id="placename" > Placeholder</a>
         </div>
 
 <!-- <div class="col pull-right">
@@ -96,7 +135,10 @@
 
 
 
-
+        <!-- Restaurants -->
+        <div id="results" class="mt-4">
+          <!-- Restaurants will diplay here -->
+      </div>
 <!-- ========================================placeholder===================================================================== -->
 <div class="row ml-5 mb-4">
   <div class="col-sm-3"><div class="card" style="width: 18rem;">
