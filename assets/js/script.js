@@ -27,6 +27,7 @@ function displayResults(restaurants) {
 //   const images = []; //Would like these to be seprate objects to allow layout manipulation. Discuss
 
   // CONSTRAIN THIS TO 10 (OR MORE, TBC....)
+
   for (let index = 0; index < Math.min(9, restaurants.length); index++) {
     const restaurant = restaurants[index];
     console.log(restaurant); // Log the entire restaurant object to the console

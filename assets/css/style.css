@@ -64,4 +64,26 @@ body {
 .searchB {
   color: white;
   background-color: #FF896D;
+  font-size: 25px;
+  padding: 8px;
+}
+
+.nextBB {
+  color: white;
+  background-color: #FF896D;
+  font-size: 25px;
+  padding: 6px;
+}
+
+
+.simplify {
+  color: black;
+  font-size: 20px;
+}
+
+.like {
+  color: white;
+  background-color: #FF896D;
+  font-size: 20px;
+  padding: 3px;
 }
