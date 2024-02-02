@@ -27,7 +27,7 @@ function displayResults(restaurants) {
 //   const images = []; //Would like these to be seprate objects to allow layout manipulation. Discuss
 
   // CONSTRAIN THIS TO 10 (OR MORE, TBC....)
-  for (let index = 0; index < Math.min(10, restaurants.length); index++) {
+  for (let index = 0; index < Math.min(9, restaurants.length); index++) {
     const restaurant = restaurants[index];
     console.log(restaurant); // Log the entire restaurant object to the console
 
@@ -48,29 +48,31 @@ function displayResults(restaurants) {
       return formattedHours;
     }
 
+    // Retrieving the URL for the image
+    const imgURL = restaurant.logo_photos;
+
     const card = `
          <div class="card mt-3">
              <div class="card-body">
+                 <img src = "${imgURL}">
                  <h5 class="card-title">${restaurant.name}</h5>
                  <p class="card-text">${displayAddress}</p>
                  <p class="card-text">Phone Number:${restaurant.phone_number}</p>
-                 <p class="card-text">Cuisines: ${restaurant.cuisines}</p>
                  <p class="card-text">Price Bracket: ${restaurant.dollar_signs}</p>
-                 <p class="card-text">Opening hours: ${openingHours}</p>
+                 <p class="card-text">Cuisines: ${restaurant.cuisines}</p>
                  <button class="btn btn-primary" onclick="addLike(${index})">Like!</button>
              </div>
          </div>
      `;
 
-    // Retrieving the URL for the image
-    const imgURL = restaurant.logo_photos;
+
 
     // Creating an element to hold the image
-    const image = $("<img>").attr("src", imgURL); // need to constrain image size  MM #raise ticket
+    // const image = $("<img>").attr("src", imgURL); // need to constrain image size  MM #raise ticket
 
     // Add card and image elements to the array - this should improve performance by taking the append out of the forLoop
     cardsAndImages.push(card);
-    cardsAndImages.push(image);
+    // cardsAndImages.push(image);
     // cards.push(card); //if we separate the objects
     // images.push(image);
   }
