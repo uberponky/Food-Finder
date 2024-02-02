@@ -80,3 +80,10 @@ body {
   color: black;
   font-size: 20px;
 }
+
+.like {
+  color: white;
+  background-color: #FF896D;
+  font-size: 20px;
+  padding: 3px;
+}
