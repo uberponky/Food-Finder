@@ -57,6 +57,7 @@ function displayResults(restaurants) {
                  <p class="card-text">Cuisines: ${restaurant.cuisines}</p>
                  <p class="card-text">Price Bracket: ${restaurant.dollar_signs}</p>
                  <p class="card-text">Opening hours: ${openingHours}</p>
+                 <button class="btn btn-primary" onclick="addLike(${index})">Like!</button>
              </div>
          </div>
      `;
