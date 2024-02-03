@@ -99,3 +99,35 @@ label {
 .card {
   width: 33%;
 }
+
+/* Search History */
+#search-history-container {
+  position: relative;
+  z-index: 1000;
+}
+
+#search-history-results {
+  position: absolute;
+  width: 100%;
+  margin: 0.5rem 0;
+  background: rgb(245, 245, 245)
+}
+
+#search-history-results ul {
+  list-style: none;
+  padding: 0;
+}
+
+#search-history-results i {
+  padding-right: .2rem;
+}
+
+#search-history-results li {
+  cursor: pointer;
+  padding: 0.3rem 0.5rem 0.2rem 0.5rem;
+  border-radius: 5px;
+}
+
+#search-history-results li:hover {
+  background-color: rgba(0,0,0,0.05);
+}
