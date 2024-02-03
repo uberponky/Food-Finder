@@ -16,120 +16,70 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
-
-
-<body class="img-fluid">
-
-  <br/>
-  <br/>
-  
-  
-
-    <div>
-      <div class="container spaceSi">
-          <img src="./images/Food Finder 500.png"></a>
-  
-            <button class="searchB pull-right btn spaceR" id="favourites" role="button">My Favourites <i class="fa-regular fa-heart"></i></button>
-          </div>
+<body>
+  <!-- Navbar -->
+  <nav class="container py-4">
+    <div class="d-flex justify-content-between align-items-end">
+      <img src="./images/Food Finder 250.png" class="img-fluid">
+      <button class="btn" id="favourites" role="button">My Favourites <i class="fa-regular fa-heart"></i></button>
     </div>
-    <!-- pull-right spaceR searchB btn -->
+  </nav>
   
-    <br/>
-
-      
-    <br/>
-
-
-
-
-      <form class="d-flex flex-row navbar navbar-dark bg-dark">
-        <br/>
-  </form>
-
-<form id="searchForm" class="d-flex flex-row navbar navbar-dark bg-dark">
-  <br/>
-  
-          <div class="form-group spaceSi">
-              <label for="location" class="whiteT">Location:</label>
-              <input type="text" class="form-control" id="location" placeholder="Enter location">
-          </div>
-
-      <div class="form-group">
-        <label for="cuisine" class="whiteT">Cuisine Type:</label>
-        <input type="text" class="form-control" id="cuisine" placeholder="Enter cuisine type">
-    </div>
-      
-      <div class="form-group">
-        <label for="price" class="whiteT">Price Bracket:</label>
-        <select class="form-control" id="price">
+  <!-- Form -->
+  <section class="container-fluid bg-dark-blue">
+    <div class="container">
+      <form id="searchForm" class="row d-flex align-items-end py-5">
+        <!-- Location -->
+        <div class="form-group col-md-6 pb-2">
+            <label for="location" class="whiteT">Location:</label>
+            <input type="text" class="form-control" id="location" placeholder="Enter location">
+        </div>
+        <!-- Cuisine -->
+        <div class="form-group col-md-2 pb-2">
+          <label for="cuisine" class="whiteT">Cuisine Type:</label>
+          <select class="form-control" id="cuisine">
             <option value="">Any</option>
-            <option value="1">Cheap</option>
-            <option value="2">Moderate</option>
-            <option value="3">Expensive</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Pizza">Pizza</option>
+            <option value="Indian">Indian</option>
         </select>
+        </div>
+        <!-- Price -->
+        <div class="form-group col-md-2 pb-2">
+          <label for="price" class="whiteT">Price Bracket:</label>
+          <select class="form-control" id="price">
+              <option value="">Any</option>
+              <option value="Cheap">Cheap</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Expensive">Expensive</option>
+          </select>
+        </div>
+        <!-- Search button -->
+        <div class="col-md-2 pb-2 pt-3">
+          <button type="button" class="btn w-100" onclick="searchRestaurants()">Search <i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        
+      </form>
     </div>
+  </section>
 
-      <button type="button" class="searchB spaceLR btn spaceSi" onclick="searchRestaurants()">Search <i class="fa-solid fa-magnifying-glass"></i></button>
-
-
-</form>
-
-<form class="d-flex flex-row navbar navbar-dark bg-dark">
-      <br/>
-</form>
-
-
-      <br/>
-
-
-
-
-
-
-
-
-
-
-
-
-<br/>
-
-<div class="d-flex">
-  <p class="pull-left spaceL simplify"> Show results for</p>
-</div>
-
-<div class="d-flex">
-  <p class="pull-left spaceL simplify" id="placename" > Placeholder</p>
-  <button class="pull-right spaceR nextBB btn" id="next" role="button">Next <i class="fa-solid fa-right-to-bracket"></i></button>
-</div>
-
-
-<br/>
-<p>
-  <hr/>
-</p>
-<br/>
-<br/>
-
-
-<div class="card mt-3">
-  <div class="card-body">
-      <h5 class="card-title">placeholder</h5>
-      <p class="card-text">placeholder44</p>
-      <p class="card-text">Phone Numbe</p>
-      <p> IMAGE GOES HERE</p>
-      <p class="card-text">Price Bracket: money</p>
-      <p class="card-text">Cuisines: yumyum</p>
-      <button class="btn like" >Like <i class="fa-solid fa-heart"></i></button>
-  </div>
-</div>
-
-        <!-- Restaurants -->
-        <div id="results" class="row ml-5 col-sm-4 margin-top spaceSi">
-          <!-- Restaurants will diplay here -->
-      </div>
-
-<main>
+  <!-- Results Header -->
+  <section class="container">
+    <div class="d-flex pt-3">
+      <p class="pull-left mb-1"> Showing results for</p>
+    </div>
+    <div class="d-flex pb-3 align-items-end">
+      <p class="pull-left simplify m-0" id="placename" > Placeholder</p>
+      <button class="pull-right btn" id="next" role="button">Next <i class="fa-solid fa-right-to-bracket"></i></button>
+    </div>
+  </section>
+  
+  <!-- Restaurants -->
+  <section class="container">
+    <div id="results" class="row">
+      <!-- Restaurants will diplay here -->
+    </div>
+  </section>
 
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

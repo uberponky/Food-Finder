@@ -6,28 +6,25 @@
 :root {
   --primary: #0A2830;
   --accent: #FF896D;
+  --accent-dark: #ff7957;
 }
 
 body {
   font-family: 'Lexend', sans-serif;
 }
 
-
-
-
-
+/* Spacing */
 .col {
   text-align: right;
-  }
-  .pull-right {
+}
+
+.pull-right {
   margin: 0 0 0 auto;
-  }
+}
 
 .vertical-align-top {
   vertical-align: top
 }
-
-
 
 .spaceR {
   margin-right: 50px;
@@ -37,17 +34,6 @@ body {
   margin-left: 50px;
 }
 
-
-
-.whiteT {
-  color: aliceblue;
-}
-
-.orange {
-  color: orange
-}
-
-
 .spaceLL {
   margin-left: 300px;
 }
@@ -56,34 +42,47 @@ body {
   margin-right: 300px;
 }
 
+/* Colours */
+.whiteT {
+  color: aliceblue;
+}
+
+.orange {
+  color: orange
+}
+
 .spaceSi {
   margin-left: 70px;
     margin-right: 70px;
 }
-
-.searchB {
-  color: white;
-  background-color: #FF896D;
-  font-size: 25px;
-  padding: 8px;
-}
-
-.nextBB {
-  color: white;
-  background-color: #FF896D;
-  font-size: 25px;
-  padding: 6px;
-}
-
 
 .simplify {
   color: black;
   font-size: 20px;
 }
 
+.bg-dark-blue {
+  background-color: var(--primary);
+}
+
+/* Buttons */
+.btn {
+  background-color: var(--accent);
+  color: white;
+}
+
+.btn:hover{
+ background-color: var(--accent-dark);
+ color: white
+}
+
 .like {
   color: white;
-  background-color: #FF896D;
-  font-size: 20px;
-  padding: 3px;
+  background-color: var(--accent);
+  font-size: 1rem;
+}
+
+/* Labels */
+label {
+  font-size: 0.9rem;
 }
