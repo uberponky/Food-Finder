@@ -32,7 +32,7 @@
         <!-- Location -->
         <div class="form-group col-md-6 pb-2">
             <label for="location" class="whiteT">Location:</label>
-            <input type="text" class="form-control" id="location" placeholder="Enter location" style="border-radius: 0;">
+            <input autocomplete="off" spellcheck="false" type="text" class="form-control" id="location" placeholder="Enter location" style="border-radius: 0;">
             <!-- Autocomplete and Historical Searches -->
             <div id="search-history-container" class="container">
               <div class="row">
@@ -85,7 +85,7 @@
         </div>
         <!-- Search button -->
         <div class="col-md-2 pb-2 pt-3">
-          <button type="button" class="btn w-100" onclick="searchRestaurants()">Search <i class="fa-solid fa-magnifying-glass"></i></button>
+          <button type="button" class="btn w-100" id="search-button">Search <i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
     </div>
         
@@ -110,15 +110,16 @@
       <div class="card col-4 p-0 text-center">
         <img src="/images/restaurant-placeholder.jpg" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
         <div class="card-body">
-          <h5 class="card-title" id="restaurant-name">Cafe Name</h5>
+          <h5 class="card-title">Cafe Name</h5>
+          <p class="address">161 Frederick St Unit 100, Toronto, ON M5A 4P3, Canada</p>
           <hr>
           <h6 class="m-0"><b>Phone</b></h6>
-          <p class="card-text" id="restaurant-phone">01789 205 761</p>
+          <p class="card-text">01789 205 761</p>
           <h6 class="m-0"><b>Price</b></h6>
-          <p class="card-text" id="restaurant-price">£££</p>
+          <p class="card-text">£££</p>
           <h6 class="m-0"><b>Cuisines</b></h6>
-          <p class="card-text" id="restaurant-cuisines">Mexican, Modern, Lunch, Dinner, Pizza, Indian</p>
-          <a href="#" class="btn">Add to Favourites <i class="fa-regular fa-heart"></i></a>
+          <p class="card-text">Mexican, Modern, Lunch, Dinner, Pizza, Indian</p>
+          <a href="#" class="btn" id="restaurant-favourite" data-index="1">Add to Favourites <i class="fa-regular fa-heart"></i></a>
         </div>
       </div>
       <div class="card col-4 p-0 text-center">
