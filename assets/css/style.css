@@ -100,6 +100,10 @@ label {
   width: 33%;
 }
 
+.address {
+  font-size: 0.8rem;
+}
+
 /* Search History */
 #search-history-container {
   position: relative;
