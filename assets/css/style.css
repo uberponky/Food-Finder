@@ -13,6 +13,14 @@ body {
   font-family: 'Lexend', sans-serif;
 }
 
+p {
+  margin-bottom: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
 /* Spacing */
 .col {
   text-align: right;
@@ -85,4 +93,9 @@ body {
 /* Labels */
 label {
   font-size: 0.9rem;
+}
+
+/* Cards */
+.card {
+  width: 33%;
 }
