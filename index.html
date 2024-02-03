@@ -32,7 +32,36 @@
         <!-- Location -->
         <div class="form-group col-md-6 pb-2">
             <label for="location" class="whiteT">Location:</label>
-            <input type="text" class="form-control" id="location" placeholder="Enter location">
+            <input type="text" class="form-control" id="location" placeholder="Enter location" style="border-radius: 0;">
+            <!-- Autocomplete and Historical Searches -->
+            <div id="search-history-container" class="container">
+              <div class="row">
+                <div id="search-history-results" class="col-6 px-5 py-4 border hidden">
+                  <ul id="autocomplete-results">
+                    <li>
+
+                    </li>
+                  </ul>
+                  <hr>
+                  <span class="header">Search History</span>
+                  <ul id="search-history-items">
+                    <li>
+                      <i class="fa-solid fa-location-dot"></i>
+                      London
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-location-dot"></i>
+                      London
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-location-dot"></i>
+                      London
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- End Autocomplete -->
         </div>
         <!-- Cuisine -->
         <div class="form-group col-md-2 pb-2">
@@ -58,9 +87,9 @@
         <div class="col-md-2 pb-2 pt-3">
           <button type="button" class="btn w-100" onclick="searchRestaurants()">Search <i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
+    </div>
         
       </form>
-    </div>
   </section>
 
   <!-- Results Header -->
