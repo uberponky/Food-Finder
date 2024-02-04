@@ -90,6 +90,15 @@ p {
   font-size: 1rem;
 }
 
+.btn-grey {
+  background-color: grey;
+  cursor: default!important;
+}
+
+.btn-grey:hover {
+  background-color: grey;
+}
+
 /* Labels */
 label {
   font-size: 0.9rem;
