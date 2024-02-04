@@ -67,7 +67,7 @@ function searchRestaurants(location) {
 
   // Make the API request
   $.get(apiUrl, function (data) {
-    displayResults(data.restaurants)
+    displayResults(data.restaurants, location)
   })
 
   // Loading logic
@@ -77,7 +77,7 @@ function searchRestaurants(location) {
   waitBtn.removeClass("hidden")
 }
 
-function displayResults(restaurantsObj) {
+function displayResults(restaurantsObj, location) {
   // NO RESTURANTS ARE RETURNED - RETURN
   const resLength = restaurantsObj.length
   if (resLength == 0) {
@@ -116,6 +116,9 @@ function displayResults(restaurantsObj) {
   const waitBtn = $('#search-button-waiting')
   searchBtn.removeClass('hidden')
   waitBtn.addClass("hidden")
+
+  // Set 'showing results for' text
+  $('#placename').text(location)
 }
 
 // Sanitise array of cuisines
@@ -213,9 +216,6 @@ function displayAutocomplete(input) {
         let location = $(e.target).data('location')
         loadVal(location)
       })
-
-      // Set current search result
-      $('#placename').text(location)
     })
     .catch(error => console.log('error', error))
 }
