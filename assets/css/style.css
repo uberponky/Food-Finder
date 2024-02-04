@@ -90,6 +90,14 @@ p {
   font-size: 1rem;
 }
 
+.btn-grey {
+  background-color: grey;
+}
+
+.btn-grey:hover {
+  background-color: grey;
+}
+
 /* Labels */
 label {
   font-size: 0.9rem;

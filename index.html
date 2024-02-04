@@ -37,27 +37,10 @@
             <div id="search-history-container" class="container">
               <div class="row">
                 <div id="search-history-results" class="col-6 px-5 py-4 border hidden">
-                  <ul id="autocomplete-results">
-                    <li>
-
-                    </li>
-                  </ul>
+                  <ul id="autocomplete-results"></ul>
                   <hr>
                   <span class="header">Search History</span>
-                  <ul id="search-history-items">
-                    <li>
-                      <i class="fa-solid fa-location-dot"></i>
-                      London
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-location-dot"></i>
-                      London
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-location-dot"></i>
-                      London
-                    </li>
-                  </ul>
+                  <ul id="search-history-items"></ul>
                 </div>
               </div>
             </div>
@@ -98,8 +81,9 @@
       <p class="pull-left mb-1"> Showing results for</p>
     </div>
     <div class="d-flex pb-3 align-items-end">
-      <p class="pull-left simplify m-0" id="placename" > Placeholder</p>
-      <button class="pull-right btn" id="next" role="button">Next <i class="fa-solid fa-right-to-bracket"></i></button>
+      <p class="pull-left simplify m-0" id="placename">Most Popular Restaurants</p>
+      <button class="pull-right btn hidden" id="next-btn" role="button">Next <i class="fa-solid fa-right-to-bracket"></i></button>
+      <button class="pull-right btn btn-grey hidden" id="no-results-btn" role="button">No more results</i></button>
     </div>
   </section>
   
@@ -108,45 +92,47 @@
     <div id="results" class="d-flex gap-3">
       <!-- Restaurants will diplay here -->
       <div class="card col-4 p-0 text-center">
-        <img src="/images/restaurant-placeholder.jpg" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
+        <img src="/images/restaurant-placeholder-1.jpg" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
         <div class="card-body">
-          <h5 class="card-title">Cafe Name</h5>
-          <p class="address">161 Frederick St Unit 100, Toronto, ON M5A 4P3, Canada</p>
+          <h5 class="card-title">Taouk</h5>
+          <p class="address">300 Rue Sicard<br>Sainte-Thérèse<br>QC J7E 2B4</p>
           <hr>
           <h6 class="m-0"><b>Phone</b></h6>
-          <p class="card-text">01789 205 761</p>
+          <p class="card-text">0145 0420 488</p>
           <h6 class="m-0"><b>Price</b></h6>
-          <p class="card-text">£££</p>
+          <p class="card-text">£</p>
           <h6 class="m-0"><b>Cuisines</b></h6>
-          <p class="card-text">Mexican, Modern, Lunch, Dinner, Pizza, Indian</p>
+          <p class="card-text">Chicken, Healthy, Middle Eastern, Moyen-Oriental, Salads, Sandwich, Sandwiches & Subs</p>
           <a href="#" class="btn" id="restaurant-favourite" data-index="1">Add to Favourites <i class="fa-regular fa-heart"></i></a>
         </div>
       </div>
       <div class="card col-4 p-0 text-center">
-        <img src="/images/restaurant-placeholder.jpg" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
+        <img src="/images/restaurant-placeholder-2.jpeg" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
         <div class="card-body">
-          <h5 class="card-title" id="restaurant-name">Cafe Name</h5>
+          <h5 class="card-title" id="restaurant-name">Petro-Canada</h5>
+          <p class="address">685 Appleby Line<br>Burlington<br>ON L7L</p>
           <hr>
           <h6 class="m-0"><b>Phone</b></h6>
-          <p class="card-text" id="restaurant-phone">01789 205 761</p>
+          <p class="card-text" id="restaurant-phone">0190 5639 580</p>
           <h6 class="m-0"><b>Price</b></h6>
           <p class="card-text" id="restaurant-price">£££</p>
           <h6 class="m-0"><b>Cuisines</b></h6>
-          <p class="card-text" id="restaurant-cuisines">Mexican, Modern, Lunch, Dinner, Pizza, Indian</p>
+          <p class="card-text" id="restaurant-cuisines">Baby, Ben & Jerry's, Convenience, Cool Treats, Drinks, Dépanneur, Everyday Essentials</p>
           <a href="#" class="btn">Add to Favourites <i class="fa-regular fa-heart"></i></a>
         </div>
       </div>
       <div class="card col-4 p-0 text-center">
-        <img src="/images/restaurant-placeholder.jpg" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
+        <img src="/images/restaurant-placeholder-3.jpg" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
         <div class="card-body">
-          <h5 class="card-title" id="restaurant-name">Cafe Name</h5>
+          <h5 class="card-title" id="restaurant-name">Fiesta Lounge</h5>
+          <p class="address">17111 Yonge St<br>Newmarket<br>ON L3Y</p>
           <hr>
           <h6 class="m-0"><b>Phone</b></h6>
-          <p class="card-text" id="restaurant-phone">01789 205 761</p>
+          <p class="card-text" id="restaurant-phone">0190 5898 260</p>
           <h6 class="m-0"><b>Price</b></h6>
-          <p class="card-text" id="restaurant-price">£££</p>
+          <p class="card-text" id="restaurant-price">££</p>
           <h6 class="m-0"><b>Cuisines</b></h6>
-          <p class="card-text" id="restaurant-cuisines">Mexican, Modern, Lunch, Dinner, Pizza, Indian</p>
+          <p class="card-text" id="restaurant-cuisines">Salads, Sandwich, Sandwiches & Subs, Chicken, Healthy, Middle Eastern, Moyen-Oriental</p>
           <a href="#" class="btn">Add to Favourites <i class="fa-regular fa-heart"></i></a>
         </div>
       </div>

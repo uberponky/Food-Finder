@@ -4,16 +4,17 @@ if (history = localStorage.getItem('history')) history = JSON.parse(history)
 else history = []
 
 // GLOBAL VARIABLES
-let index = 0  // Used to track position in restaurants array
+let index           // Used to track position in restaurants array
+let restaurants     // Used to store current restaurants object
 
 // AWAIT PAGE LOAD
 $(function() {
   // Get search button
   const searchBtn = $('#search-button')
   const input = $('#location')
+  const nextBtn = $('#next-btn')
 
   // Add event listener that passes current input value into searchResaurants function
-  //searchBtn.on('click', {userInput: $("#location").val()}, searchRestaurants)
   searchBtn.on('click', () => {
     searchRestaurants($("#location").val())
   })
@@ -29,7 +30,12 @@ $(function() {
     // When user enters 3 characters into input, call function
     if (input.val().length > 2) displayAutocomplete(input.val())
     else ($('#autocomplete-results').empty())
-  })                         
+  })
+
+  // Establish event listener for next button
+  nextBtn.on('click', () => {
+    loadNext(restaurants, index)
+  })
 })
 
 
@@ -46,8 +52,8 @@ function searchRestaurants(location) {
   displaySearchHistory()
 
   // const location = $("#location").val(); // location SEEMS to not error, but doesn't return accurate geo. tried to replace with address.city but is 'undefined' . I'm sure it's something stupid MM #raise ticket
-  const cuisine = $("#cuisine").val();
-  const price = $("#dollar_signs").val();
+  const cuisine = $("#cuisine").val()
+  const price = $("#dollar_signs").val()
 
   // Make a request to the SPOONACULAR API
   // MM DAILY ALLOWANCE 150 const apiKey = "255a8a9c8426434fbef6d2926b18e54a"; key for mandy@cullenmiller.com, 
@@ -56,14 +62,16 @@ function searchRestaurants(location) {
 
   // Make the API request
   $.get(apiUrl, function (data) {
-    displayResults(data.restaurants);
-  });
+    displayResults(data.restaurants)
+  })
+
+  // Set current search result
+  $('#placename').text(location)
 }
 
-function displayResults(restaurants) {
-
+function displayResults(restaurantsObj) {
   // NO RESTURANTS ARE RETURNED - RETURN
-  const resLength = restaurants.length
+  const resLength = restaurantsObj.length
   if (resLength == 0) {
     $('#no-results').removeClass('hidden')
     return
@@ -71,59 +79,21 @@ function displayResults(restaurants) {
 
   // RESTAURANTS ARE RETURNED - CONTINUE
   // Remove all but first 9 results of returned array
-  if (resLength > 9) restaurants = restaurants.slice(0, 9)  
+  if (resLength > 9) restaurants = restaurantsObj.slice(0, 9)  
   
   // Ensure no results div is hidden
   $('#no-results').addClass('hidden')
 
-  // DECLARE resultsContainer THEN EMPTY BEFORE APPENDING NEW CARDS
-  const resultsContainer = $("#results");
-  resultsContainer.empty();
+  // Unhide next button
+  $('#next-btn').removeClass('hidden')
+  $('#no-results-btn').addClass('hidden')
 
-  // Array to store card DOM elements
-  const cards=[]; 
-
-  for (index = 0; index < Math.min(3, restaurants.length); index++) {
-    const restaurant = restaurants[index];
-
-    //SELECT ONLY REQUIRED ADDRESS FIELDS FROM ADDRESS OBJECT
-    const address = restaurant.address;
-    const displayAddress = `${address.street_addr}<br> ${address.city}<br> ${address.state} ${address.zipcode}`;
-
-    // Retrieving the URL for the image
-    const imgURL = restaurant.logo_photos;
-    const imgURLFallback = '/images/restaurant-placeholder.jpg'
-
-    // Format the cuisines data
-    const cuisines = formatCuisines(restaurant.cuisines)
-
-    // Create DOM element for card
-    const card = `
-    <div class="card col-4 p-0 text-center">
-      <img src="${imgURL}" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
-      <div class="card-body">
-        <h5 class="card-title">${restaurant.name}</h5>
-        <p class="address">${displayAddress}</p>
-        <hr>
-        <h6 class="m-0"><b>Phone</b></h6>
-        <p class="card-text">${restaurant.phone_number}</p>
-        <h6 class="m-0"><b>Price</b></h6>
-        <p class="card-text">${restaurant.phone_number}</p>
-        <h6 class="m-0"><b>Cuisines</b></h6>
-        <p class="card-text">${cuisines}</p>
-        <a href="#" class="btn" id="restaurant-favourite" data-index="${index}">Add to Favourites <i class="fa-regular fa-heart"></i></a>
-      </div>
-    </div>
-     `
-
-    cards.push(card);
-  }
-
-  // Add the card and image to the container
-  resultsContainer.append(cards);
+  // Reset index and load next restaurants to DOM
+  index = 0
+  loadNext(restaurants, index)
 }
 
-
+// Sanitise array of cuisines
 function formatCuisines(cuisines) {
   cuisines = cuisines.join(", ")                   // Convert array intro string
   cuisines = cuisines.split(', ')                  // Convert back to remove badly formatted array elements
@@ -131,7 +101,6 @@ function formatCuisines(cuisines) {
   cuisines = [...new Set(cuisines)];               // Remove duplicates
   cuisines = cuisines.slice(0, 7)                  // Keep first 7 elements
   return cuisines.join(", ")                       // Return as string
-  
 }
 
 // Create list elements and append to history search results
@@ -159,7 +128,7 @@ function displaySearchHistory() {
 
 // Stringify history array and store in local storage
 function storeSearchHistory(location) {
-  const index = history.indexOf(location);
+  const index = history.indexOf(location)
   if (index != -1) history.splice(index, 1)
   history.unshift(location)
   localStorage.setItem('history', JSON.stringify(history))
@@ -218,13 +187,96 @@ function displayAutocomplete(input) {
         // Grab data result of clicked item
         let location = $(e.target).data('location')
         loadVal(location)
-        console.log(location);
       })
     })
-    .catch(error => console.log('error', error));
+    .catch(error => console.log('error', error))
 }
 
 // Load clicked element into search
 function loadVal(location) {
   $('#location').val(location)
+}
+
+// Format phone number
+function formatPhoneNumber(num) {
+  num = "0" + num.toString()  // Convert into string, from number
+  num = num.split("")         // Convert into array
+  num.splice(4, 0, " ")       // Add space
+  num.splice(9, 0, " ")       // Add space
+  num.pop()
+  num = num.join("")          // Convert to string
+  return num
+}
+
+// Format Price
+function formatPrice(price) {
+  let formattedPrice = ''
+  if (price) {
+    for (let i = 0; i < price; i++) {
+      formattedPrice += '£'
+    }
+  } else {
+    formattedPrice = '£'
+  }
+  return formattedPrice
+  }
+
+// Load next three restaurants, given a resturant object and starting index
+function loadNext(restaurants, currentIndex) {
+  // Empty existing results
+  const resultsContainer = $("#results")
+  resultsContainer.empty()
+
+  // Array to store card DOM elements
+  const cards= []
+
+  // Skip declaration, use gloval index variable
+  for (; index < Math.min((currentIndex + 3), restaurants.length); index++) {
+    const restaurant = restaurants[index]
+    console.log(index)
+
+    //SELECT ONLY REQUIRED ADDRESS FIELDS FROM ADDRESS OBJECT
+    const address = restaurant.address
+    const displayAddress = `${address.street_addr}<br> ${address.city}<br> ${address.state} ${address.zipcode}`
+
+    // Retrieving the URL for the image
+    const imgURL = restaurant.logo_photos
+    const imgURLFallback = '/images/restaurant-placeholder-1.jpg'
+
+    // Format data elements
+    const cuisines = formatCuisines(restaurant.cuisines)
+    const phoneNo = formatPhoneNumber(restaurant.phone_number)
+    let price = formatPrice(restaurant.dollar_signs)
+
+    // Create DOM element for card
+    const card = `
+    <div class="card col-4 p-0 text-center">
+      <img src="${imgURL}" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
+      <div class="card-body">
+        <h5 class="card-title">${restaurant.name}</h5>
+        <p class="address">${displayAddress}</p>
+        <hr>
+        <h6 class="m-0"><b>Phone</b></h6>
+        <p class="card-text">${phoneNo}</p>
+        <h6 class="m-0"><b>Price</b></h6>
+        <p class="card-text">${price}</p>
+        <h6 class="m-0"><b>Cuisines</b></h6>
+        <p class="card-text">${cuisines}</p>
+        <a href="#" class="btn" id="restaurant-favourite" data-index="${index}">Add to Favourites <i class="fa-regular fa-heart"></i></a>
+      </div>
+    </div>
+    `
+
+    // Add to array of DOM elements
+    cards.push(card)
+  }
+
+  // Render to DOM
+  resultsContainer.append(cards)
+
+  // Hide next button if no more restaurants can be found
+  if (index == restaurants.length) {
+    $('#next-btn').addClass('hidden')
+    $('#no-results-btn').removeClass('hidden')
+  }
 }
