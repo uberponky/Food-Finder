@@ -76,7 +76,18 @@ function displayResults(restaurantsObj) {
   // NO RESTURANTS ARE RETURNED - RETURN
   const resLength = restaurantsObj.length
   if (resLength == 0) {
+    // Empty existing results
+    const resultsContainer = $("#results")
+    resultsContainer.empty()
+    
+    // Show no results container
     $('#no-results').removeClass('hidden')
+
+    // Remove waiting button
+    const searchBtn = $('#search-button')
+    const waitBtn = $('#search-button-waiting')
+    searchBtn.removeClass('hidden')
+    waitBtn.addClass("hidden")
     return
   }
 
