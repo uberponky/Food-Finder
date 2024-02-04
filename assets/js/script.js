@@ -76,7 +76,18 @@ function displayResults(restaurantsObj) {
   // NO RESTURANTS ARE RETURNED - RETURN
   const resLength = restaurantsObj.length
   if (resLength == 0) {
+    // Empty existing results
+    const resultsContainer = $("#results")
+    resultsContainer.empty()
+    
+    // Show no results container
     $('#no-results').removeClass('hidden')
+
+    // Remove waiting button
+    const searchBtn = $('#search-button')
+    const waitBtn = $('#search-button-waiting')
+    searchBtn.removeClass('hidden')
+    waitBtn.addClass("hidden")
     return
   }
 
@@ -245,7 +256,6 @@ function loadNext(restaurants, currentIndex) {
   // Skip declaration, use gloval index variable
   for (; index < Math.min((currentIndex + 3), restaurants.length); index++) {
     const restaurant = restaurants[index]
-    console.log(index)
 
     //SELECT ONLY REQUIRED ADDRESS FIELDS FROM ADDRESS OBJECT
     const address = restaurant.address
@@ -274,13 +284,19 @@ function loadNext(restaurants, currentIndex) {
         <p class="card-text">${price}</p>
         <h6 class="m-0"><b>Cuisines</b></h6>
         <p class="card-text">${cuisines}</p>
-        <a href="#" class="btn" id="restaurant-favourite" data-index="${index}">Add to Favourites <i class="fa-regular fa-heart"></i></a>
+        <button class="btn" id="restaurant-favourite" data-index="${index}">Add to Favourites <i class="fa-regular fa-heart"></i></button>
+        <button class="btn hidden" id="restaurant-favourite-added" data-index="${index}">Added <i class="fa-solid fa-heart"></i></button>
       </div>
     </div>
     `
 
     // Add to array of DOM elements
     cards.push(card)
+
+    // Add event listeners to buttons
+    $('#restaurant-favourite').on('click', () => {
+      addtoFavourites(e)
+    })
   }
 
   // Render to DOM
@@ -291,4 +307,9 @@ function loadNext(restaurants, currentIndex) {
     $('#next-btn').addClass('hidden')
     $('#no-results-btn').removeClass('hidden')
   }
+}
+
+function addToFavourites(e) {
+  e.preventDefault()
+  console.log(e.target);
 }
