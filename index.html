@@ -61,14 +61,15 @@
           <label for="price" class="whiteT">Price Bracket:</label>
           <select class="form-control" id="price">
               <option value="">Any</option>
-              <option value="Cheap">Cheap</option>
-              <option value="Moderate">Moderate</option>
-              <option value="Expensive">Expensive</option>
+              <option value="1">Cheap</option>
+              <option value="2">Moderate</option>
+              <option value="3">Expensive</option>
           </select>
         </div>
         <!-- Search button -->
         <div class="col-md-2 pb-2 pt-3">
           <button type="button" class="btn w-100" id="search-button">Search <i class="fa-solid fa-magnifying-glass"></i></button>
+          <button type="button" class="btn w-100 btn-grey hidden" id="search-button-waiting">Searching <i class="fa-solid fa-hourglass-start"></i></button>
         </div>
     </div>
         

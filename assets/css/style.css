@@ -92,6 +92,7 @@ p {
 
 .btn-grey {
   background-color: grey;
+  cursor: default!important;
 }
 
 .btn-grey:hover {

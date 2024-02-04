@@ -65,8 +65,11 @@ function searchRestaurants(location) {
     displayResults(data.restaurants)
   })
 
-  // Set current search result
-  $('#placename').text(location)
+  // Loading logic
+  const searchBtn = $('#search-button')
+  const waitBtn = $('#search-button-waiting')
+  searchBtn.addClass('hidden')
+  waitBtn.removeClass("hidden")
 }
 
 function displayResults(restaurantsObj) {
@@ -91,6 +94,12 @@ function displayResults(restaurantsObj) {
   // Reset index and load next restaurants to DOM
   index = 0
   loadNext(restaurants, index)
+
+  // Remove waiting button
+  const searchBtn = $('#search-button')
+  const waitBtn = $('#search-button-waiting')
+  searchBtn.removeClass('hidden')
+  waitBtn.addClass("hidden")
 }
 
 // Sanitise array of cuisines
@@ -188,6 +197,9 @@ function displayAutocomplete(input) {
         let location = $(e.target).data('location')
         loadVal(location)
       })
+
+      // Set current search result
+      $('#placename').text(location)
     })
     .catch(error => console.log('error', error))
 }
