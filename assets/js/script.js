@@ -3,6 +3,11 @@ let history
 if (history = localStorage.getItem('history')) history = JSON.parse(history)
 else history = []
 
+// INITIALISE HISTORY ARRAY
+let favourites
+if (favourites = localStorage.getItem('favourites')) favourites = JSON.parse(favourites)
+else favourites = []
+
 // GLOBAL VARIABLES
 let index           // Used to track position in restaurants array
 let restaurants     // Used to store current restaurants object
@@ -284,23 +289,23 @@ function loadNext(restaurants, currentIndex) {
         <p class="card-text">${price}</p>
         <h6 class="m-0"><b>Cuisines</b></h6>
         <p class="card-text">${cuisines}</p>
-        <button class="btn" id="restaurant-favourite" data-index="${index}">Add to Favourites <i class="fa-regular fa-heart"></i></button>
-        <button class="btn hidden" id="restaurant-favourite-added" data-index="${index}">Added <i class="fa-solid fa-heart"></i></button>
+        <button class="btn restaurant-favourite"data-index="${index}">Add to Favourites <i class="fa-regular fa-heart"></i></button>
+        <button class="btn restaurant-favourite-added hidden" data-index="${index}">Added <i class="fa-solid fa-heart"></i></button>
       </div>
     </div>
     `
 
     // Add to array of DOM elements
     cards.push(card)
-
-    // Add event listeners to buttons
-    $('#restaurant-favourite').on('click', () => {
-      addtoFavourites(e)
-    })
   }
 
   // Render to DOM
   resultsContainer.append(cards)
+
+  // Add event listeners to buttons
+  $('.restaurant-favourite').on('click', (e) => {
+    addToFavourites(e)
+  })
 
   // Hide next button if no more restaurants can be found
   if (index == restaurants.length) {
@@ -310,6 +315,15 @@ function loadNext(restaurants, currentIndex) {
 }
 
 function addToFavourites(e) {
-  e.preventDefault()
-  console.log(e.target);
+  let addBtn = $(e.target)
+  let addedBtn = addBtn.next()
+  let restaurantIndex = addBtn.data('index')
+
+  // Store restaurant in local storage
+  favourites.push(restaurants[restaurantIndex])
+  localStorage.setItem('favourites', JSON.stringify(favourites))
+
+  // Show / Hide buttons
+  addBtn.addClass('hidden')
+  addedBtn.removeClass('hidden')
 }
