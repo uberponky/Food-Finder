@@ -17,14 +17,53 @@
 </head>
 
 <body>
+  <!-- Navbar -->
+  <nav class="container py-4">
+    <div class="d-flex justify-content-between align-items-end">
+      <img src="./images/Food Finder 250.png" class="img-fluid">
+      <a href="/index.html" class="btn" id="search" role="button">Search Restaurants <i class="fa-solid fa-magnifying-glass"></i></a>
+    </div>
+  </nav>
   
+  <!-- Form -->
+  <section class="container-fluid bg-dark-blue">
+    <div class="container text-center text-light p-5">
+      <h2 class="p-2 m-2">My Favourites</h2>
+    </div>
+  </section>
+
+  <!-- Results Header -->
+  <section class="container">
+    <div class="d-flex pt-3">
+    </div>
+    <div class="d-flex pb-3 align-items-end">
+      <button class="pull-right btn hidden" id="next-btn" role="button">Next <i class="fa-solid fa-right-to-bracket"></i></button>
+      <button class="pull-right btn btn-grey hidden" id="no-results-btn" role="button">No more results</i></button>
+    </div>
+  </section>
   
+  <!-- Restaurants -->
+  <section class="container pb-3">
+    <div id="results" class="d-flex gap-3">
+      <!-- Restaurants will diplay here -->
+    </div>
+    <!-- No results card -->
+    <div class="card mx-auto hidden" id="no-results">
+      <div class="card-body p-5 text-center">
+        <h3>
+          No results to display
+        </h3>
+        <p>Return to the search screen to start adding to your favourites</p>
+        <a href="/index.html" class="btn" id="search" role="button">Search Restaurants <i class="fa-solid fa-magnifying-glass"></i></a>
+      </div>
+    </div>
+  </section>
 
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <!-- Vanilla JS -->
-  <script src="assets/js/index.js"></script>
+  <script src="assets/js/favourites.js"></script>
 </body>
 </html>
