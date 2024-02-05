@@ -16,13 +16,19 @@ $(function() {
 
   // Grab DOM elements
   const nextBtn = $('#next-btn')
-  nextBtn.removeClass('hidden')
+  const prevBtn = $('#prev-btn')
 
   // Load initial favourites
   loadNext(favourites, index)
   
   // Establish event listener for next button
   nextBtn.on('click', () => {
+    loadNext(favourites, index)
+  })
+
+  // Establish event listener for previous button
+  prevBtn.on('click', () => {
+    index = Math.max(0, index - 6)
     loadNext(favourites, index)
   })
 })
@@ -86,10 +92,25 @@ function loadNext(restaurants, currentIndex) {
     removeFromFavourite(e)
   })
 
+  // Grab selectors for buttons
+  const nextBtn = $('#next-btn')
+  const prevBtn = $('#prev-btn')
+  const noResultsBtn = $('#no-results-btn')
+
   // Hide next button if no more restaurants can be found
   if (index >= restaurants.length) {
-    $('#next-btn').addClass('hidden')
-    $('#no-results-btn').removeClass('hidden')
+    nextBtn.addClass('hidden')
+    noResultsBtn.removeClass('hidden')
+  } else {
+    nextBtn.removeClass('hidden')
+    noResultsBtn.addClass('hidden')
+  }
+
+  // Show previous button if index is higher than 2
+  if (index > 4) {
+    prevBtn.removeClass('hidden')
+  } else {
+    prevBtn.addClass('hidden')
   }
 }
 

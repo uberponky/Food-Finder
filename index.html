@@ -100,10 +100,13 @@
     <div class="d-flex pt-3">
       <p class="pull-left mb-1"> Showing results for</p>
     </div>
-    <div class="d-flex pb-3 align-items-end">
+    <div class="d-flex pb-3 align-items-end justify-content-between">
       <p class="pull-left simplify m-0" id="placename">Most Popular Restaurants</p>
-      <button class="pull-right btn hidden" id="next-btn" role="button">Next <i class="fa-solid fa-right-to-bracket"></i></button>
-      <button class="pull-right btn btn-grey hidden" id="no-results-btn" role="button">No more results</i></button>
+      <div class="d-flex justify-content-end gap-2">
+        <button class="btn hidden" id="prev-btn" role="button">Previous <i class="fa-solid fa-left-long"></i></button>
+        <button class="btn hidden" id="next-btn" role="button">Next <i class="fa-solid fa-right-long"></i></button>
+        <button class="btn btn-grey hidden" id="no-results-btn" role="button">No more results</i></button>
+      </div>
     </div>
   </section>
   

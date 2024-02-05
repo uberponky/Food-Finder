@@ -18,6 +18,7 @@ $(function() {
   const searchBtn = $('#search-button')
   const input = $('#location')
   const nextBtn = $('#next-btn')
+  const prevBtn = $('#prev-btn')
 
   // Add event listener that passes current input value into searchResaurants function
   searchBtn.on('click', () => {
@@ -40,6 +41,12 @@ $(function() {
   // Establish event listener for next button
   nextBtn.on('click', () => {
     loadNext(restaurants, index)
+  })
+
+  // Establish event listener for previous button
+  prevBtn.on('click', () => {
+    index = Math.max(0, index - 6)
+    loadNext(favourites, index)
   })
 })
 
@@ -119,16 +126,6 @@ function displayResults(restaurantsObj, location) {
 
   // Set 'showing results for' text
   $('#placename').text(location)
-}
-
-// Sanitise array of cuisines
-function formatCuisines(cuisines) {
-  cuisines = cuisines.join(", ")                   // Convert array intro string
-  cuisines = cuisines.split(', ')                  // Convert back to remove badly formatted array elements
-  cuisines = cuisines.map(string => string.trim()) // Trim whitespace
-  cuisines = [...new Set(cuisines)];               // Remove duplicates
-  cuisines = cuisines.slice(0, 7)                  // Keep first 7 elements
-  return cuisines.join(", ")                       // Return as string
 }
 
 // Create list elements and append to history search results
@@ -225,30 +222,6 @@ function loadVal(location) {
   $('#location').val(location)
 }
 
-// Format phone number
-function formatPhoneNumber(num) {
-  num = "0" + num.toString()  // Convert into string, from number
-  num = num.split("")         // Convert into array
-  num.splice(4, 0, " ")       // Add space
-  num.splice(9, 0, " ")       // Add space
-  num.pop()
-  num = num.join("")          // Convert to string
-  return num
-}
-
-// Format Price
-function formatPrice(price) {
-  let formattedPrice = ''
-  if (price) {
-    for (let i = 0; i < price; i++) {
-      formattedPrice += '£'
-    }
-  } else {
-    formattedPrice = '£'
-  }
-  return formattedPrice
-}
-
 // Load next three restaurants, given a resturant object and starting index
 function loadNext(restaurants, currentIndex) {
   // Empty existing results
@@ -307,13 +280,29 @@ function loadNext(restaurants, currentIndex) {
     addToFavourites(e)
   })
 
+  // Grab selectors for buttons
+  const nextBtn = $('#next-btn')
+  const prevBtn = $('#prev-btn')
+  const noResultsBtn = $('#no-results-btn')
+
   // Hide next button if no more restaurants can be found
-  if (index == restaurants.length) {
-    $('#next-btn').addClass('hidden')
-    $('#no-results-btn').removeClass('hidden')
+  if (index >= restaurants.length) {
+    nextBtn.addClass('hidden')
+    noResultsBtn.removeClass('hidden')
+  } else {
+    nextBtn.removeClass('hidden')
+    noResultsBtn.addClass('hidden')
+  }
+
+  // Show previous button if index is higher than 2
+  if (index > 4) {
+    prevBtn.removeClass('hidden')
+  } else {
+    prevBtn.addClass('hidden')
   }
 }
 
+// Add selected card to favourites
 function addToFavourites(e) {
   let addBtn = $(e.target)
   let addedBtn = addBtn.next()
@@ -326,4 +315,38 @@ function addToFavourites(e) {
   // Show / Hide buttons
   addBtn.addClass('hidden')
   addedBtn.removeClass('hidden')
+}
+
+// Format phone number
+function formatPhoneNumber(num) {
+  num = "0" + num.toString()  // Convert into string, from number
+  num = num.split("")         // Convert into array
+  num.splice(4, 0, " ")       // Add space
+  num.splice(9, 0, " ")       // Add space
+  num.pop()
+  num = num.join("")          // Convert to string
+  return num
+}
+
+// Format Price
+function formatPrice(price) {
+  let formattedPrice = ''
+  if (price) {
+    for (let i = 0; i < price; i++) {
+      formattedPrice += '£'
+    }
+  } else {
+    formattedPrice = '£'
+  }
+  return formattedPrice
+}
+
+// Sanitise array of cuisines
+function formatCuisines(cuisines) {
+  cuisines = cuisines.join(", ")                   // Convert array intro string
+  cuisines = cuisines.split(', ')                  // Convert back to remove badly formatted array elements
+  cuisines = cuisines.map(string => string.trim()) // Trim whitespace
+  cuisines = [...new Set(cuisines)];               // Remove duplicates
+  cuisines = cuisines.slice(0, 7)                  // Keep first 7 elements
+  return cuisines.join(", ")                       // Return as string
 }
