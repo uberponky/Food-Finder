@@ -268,7 +268,7 @@ function loadNext(restaurants, currentIndex) {
 
     // Retrieving the URL for the image
     const imgURL = restaurant.logo_photos
-    const imgURLFallback = '/images/restaurant-placeholder-1.jpg'
+    const imgURLFallback = './images/restaurant-placeholder-1.jpg'
 
     // Format data elements
     const cuisines = formatCuisines(restaurant.cuisines)
