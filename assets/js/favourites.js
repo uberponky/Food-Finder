@@ -68,8 +68,8 @@ function loadNext(restaurants, currentIndex) {
         <p class="card-text">${price}</p>
         <h6 class="m-0"><b>Cuisines</b></h6>
         <p class="card-text">${cuisines}</p>
-        <button class="btn restaurant-favourite"data-index="${index}">Add to Favourites <i class="fa-regular fa-heart"></i></button>
-        <button class="btn restaurant-favourite-added hidden" data-index="${index}">Added <i class="fa-solid fa-heart"></i></button>
+        <button class="btn restaurant-favourite"data-index="${index}">Remove from Favourites <i class="fa-solid fa-trash"></i></button>
+        <button class="btn restaurant-favourite-added hidden" data-index="${index}">Removed <i class="fa-solid fa-check"></i></button>
       </div>
     </div>
     `

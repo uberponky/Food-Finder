@@ -3,7 +3,7 @@ let history
 if (history = localStorage.getItem('history')) history = JSON.parse(history)
 else history = []
 
-// INITIALISE HISTORY ARRAY
+// INITIALISE FAVOURITES ARRAY
 let favourites
 if (favourites = localStorage.getItem('favourites')) favourites = JSON.parse(favourites)
 else favourites = []
@@ -247,7 +247,7 @@ function formatPrice(price) {
     formattedPrice = '£'
   }
   return formattedPrice
-  }
+}
 
 // Load next three restaurants, given a resturant object and starting index
 function loadNext(restaurants, currentIndex) {
