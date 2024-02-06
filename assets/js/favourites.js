@@ -62,20 +62,22 @@ function loadNext(restaurants, currentIndex) {
 
     // Create DOM element for card
     const card = `
-    <div class="card col-4 p-0 text-center">
-      <img src="${imgURL}" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
-      <div class="card-body">
-        <h5 class="card-title">${restaurant.name}</h5>
-        <p class="address">${displayAddress}</p>
-        <hr>
-        <h6 class="m-0"><b>Phone</b></h6>
-        <p class="card-text">${phoneNo}</p>
-        <h6 class="m-0"><b>Price</b></h6>
-        <p class="card-text">${price}</p>
-        <h6 class="m-0"><b>Cuisines</b></h6>
-        <p class="card-text">${cuisines}</p>
-        <button class="btn restaurant-favourite"data-index="${index}">Remove from Favourites <i class="fa-solid fa-trash"></i></button>
-        <button class="btn restaurant-favourite-added hidden" data-index="${index}">Removed <i class="fa-solid fa-check"></i></button>
+    <div class="col-4">
+      <div class="card p-0 text-center">
+        <img src="${imgURL}" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
+        <div class="card-body">
+          <h5 class="card-title">${restaurant.name}</h5>
+          <p class="address">${displayAddress}</p>
+          <hr>
+          <h6 class="m-0"><b>Phone</b></h6>
+          <p class="card-text">${phoneNo}</p>
+          <h6 class="m-0"><b>Price</b></h6>
+          <p class="card-text">${price}</p>
+          <h6 class="m-0"><b>Cuisines</b></h6>
+          <p class="card-text">${cuisines}</p>
+          <button class="btn restaurant-favourite"data-index="${index}">Remove from Favourites <i class="fa-solid fa-trash"></i></button>
+          <button class="btn restaurant-favourite-added hidden" data-index="${index}">Removed <i class="fa-solid fa-check"></i></button>
+        </div>
       </div>
     </div>
     `
