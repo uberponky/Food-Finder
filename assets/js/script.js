@@ -11,6 +11,7 @@ else favourites = []
 // GLOBAL VARIABLES
 let index           // Used to track position in restaurants array
 let restaurants     // Used to store current restaurants object
+let lon, lat        // Used in Geoapify API
 
 // AWAIT PAGE LOAD
 $(function() {
@@ -61,27 +62,50 @@ function searchRestaurants(location) {
 
   // Store location in history and display in search results
   storeSearchHistory(location)
-  displaySearchHistory()
+  displaySearchHistory() 
 
-  // const location = $("#location").val(); // location SEEMS to not error, but doesn't return accurate geo. tried to replace with address.city but is 'undefined' . I'm sure it's something stupid MM #raise ticket
-  const cuisine = $("#cuisine").val()
-  const price = $("#dollar_signs").val()
+  // Geocoding lat / lon API
+  const geoAPI = 'fdeabcbe2a5f2a291f6081b9c648f575'
 
-  // Make a request to the SPOONACULAR API
-  // MM DAILY ALLOWANCE 150 const apiKey = "255a8a9c8426434fbef6d2926b18e54a"; key for mandy@cullenmiller.com, 
-  const apiKey = "15b46f3111044b70a400bf923800f69e"; //key for bootcamp@cullenmiller.com, 
-  const apiUrl = `https://api.spoonacular.com/food/restaurants/search?cuisine=${cuisine}&location=${location}&price=${price}&apiKey=${apiKey}`;
+  // Build geocoding URL
+  const geocodingURL = `https://api.openweathermap.org/geo/1.0/direct?q=${location},CA&appid=${geoAPI}`
 
-  // Make the API request
-  $.get(apiUrl, function (data) {
-    displayResults(data.restaurants, location)
+  // Fetch longitude and latitude
+  fetch(geocodingURL)
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (data) {
+      // Validate if a location was found
+      if (data.length == 0) {
+        $('#no-results-btn').removeClass('hidden')
+        return
+      }
+
+      // Retrieve longitude and latitude from data
+      lon = data[0].lon
+      lat = data[0].lat
+
+      // Get cuisine
+      const cuisine = $("#cuisine").val()
+
+      // Make a request to the SPOONACULAR API
+      // MM DAILY ALLOWANCE 150 const apiKey = "255a8a9c8426434fbef6d2926b18e54a"; key for mandy@cullenmiller.com, 
+      const apiKey = "15b46f3111044b70a400bf923800f69e"; //key for bootcamp@cullenmiller.com, 
+      //const apiUrl = `https://api.spoonacular.com/food/restaurants/search?cuisine=${cuisine}&location=${location}&price=${price}&apiKey=${apiKey}`;
+      const apiUrl = `https://api.spoonacular.com/food/restaurants/search?cuisine=${cuisine}&lat=${lat}&lng=${lon}&apiKey=${apiKey}`;
+
+      // Make the API request
+      $.get(apiUrl, function (data) {
+        displayResults(data.restaurants, location)
+      })
+
+      // Loading logic
+      const searchBtn = $('#search-button')
+      const waitBtn = $('#search-button-waiting')
+      searchBtn.addClass('hidden')
+      waitBtn.removeClass("hidden")
   })
-
-  // Loading logic
-  const searchBtn = $('#search-button')
-  const waitBtn = $('#search-button-waiting')
-  searchBtn.addClass('hidden')
-  waitBtn.removeClass("hidden")
 }
 
 function displayResults(restaurantsObj, location) {
@@ -250,20 +274,22 @@ function loadNext(restaurants, currentIndex) {
 
     // Create DOM element for card
     const card = `
-    <div class="card col-4 p-0 text-center">
-      <img src="${imgURL}" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
-      <div class="card-body">
-        <h5 class="card-title">${restaurant.name}</h5>
-        <p class="address">${displayAddress}</p>
-        <hr>
-        <h6 class="m-0"><b>Phone</b></h6>
-        <p class="card-text">${phoneNo}</p>
-        <h6 class="m-0"><b>Price</b></h6>
-        <p class="card-text">${price}</p>
-        <h6 class="m-0"><b>Cuisines</b></h6>
-        <p class="card-text">${cuisines}</p>
-        <button class="btn restaurant-favourite"data-index="${index}">Add to Favourites <i class="fa-regular fa-heart"></i></button>
-        <button class="btn restaurant-favourite-added hidden" data-index="${index}">Added <i class="fa-solid fa-heart"></i></button>
+    <div class="col-4">
+      <div class="card p-0 text-center">
+        <img src="${imgURL}" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
+        <div class="card-body">
+          <h5 class="card-title">${restaurant.name}</h5>
+          <p class="address">${displayAddress}</p>
+          <hr>
+          <h6 class="m-0"><b>Phone</b></h6>
+          <p class="card-text">${phoneNo}</p>
+          <h6 class="m-0"><b>Price</b></h6>
+          <p class="card-text">${price}</p>
+          <h6 class="m-0"><b>Cuisines</b></h6>
+          <p class="card-text">${cuisines}</p>
+          <button class="btn restaurant-favourite"data-index="${index}">Add to Favourites <i class="fa-regular fa-heart"></i></button>
+          <button class="btn restaurant-favourite-added hidden" data-index="${index}">Added <i class="fa-solid fa-heart"></i></button>
+        </div>
       </div>
     </div>
     `
