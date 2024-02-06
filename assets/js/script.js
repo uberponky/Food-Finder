@@ -90,9 +90,8 @@ function searchRestaurants(location) {
       const cuisine = $("#cuisine").val()
 
       // Make a request to the SPOONACULAR API
-      // MM DAILY ALLOWANCE 150 const apiKey = "255a8a9c8426434fbef6d2926b18e54a"; key for mandy@cullenmiller.com, 
-      const apiKey = "15b46f3111044b70a400bf923800f69e"; //key for bootcamp@cullenmiller.com, 
-      //const apiUrl = `https://api.spoonacular.com/food/restaurants/search?cuisine=${cuisine}&location=${location}&price=${price}&apiKey=${apiKey}`;
+      const apiKey = "255a8a9c8426434fbef6d2926b18e54a" // key for mandy@cullenmiller.com, 
+      //const apiKey = "15b46f3111044b70a400bf923800f69e" // key for bootcamp@cullenmiller.com, 
       const apiUrl = `https://api.spoonacular.com/food/restaurants/search?cuisine=${cuisine}&lat=${lat}&lng=${lon}&apiKey=${apiKey}`;
 
       // Make the API request
@@ -264,8 +263,12 @@ function loadNext(restaurants, currentIndex) {
     const displayAddress = `${address.street_addr}<br> ${address.city}<br> ${address.state} ${address.zipcode}`
 
     // Retrieving the URL for the image
-    const imgURL = restaurant.logo_photos
-    const imgURLFallback = './images/restaurant-placeholder-1.jpg'
+    const imgURLFallback = './images/missing-lunch.png'
+    let imgURL = restaurant.logo_photos
+    if ((!imgURL.length) || (imgURL.includes('cdn-img.mealme.ai'))) {
+      imgURL = imgURLFallback
+    }
+    
 
     // Format data elements
     const cuisines = formatCuisines(restaurant.cuisines)
@@ -274,7 +277,7 @@ function loadNext(restaurants, currentIndex) {
 
     // Create DOM element for card
     const card = `
-    <div class="col-4">
+    <div class="col-12 col-md-4">
       <div class="card p-0 text-center">
         <img src="${imgURL}" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
         <div class="card-body">

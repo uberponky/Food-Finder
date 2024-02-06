@@ -62,7 +62,7 @@ function loadNext(restaurants, currentIndex) {
 
     // Create DOM element for card
     const card = `
-    <div class="col-4">
+    <div class="col-12 col-md-4 my-2">
       <div class="card p-0 text-center">
         <img src="${imgURL}" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
         <div class="card-body">
