@@ -46,7 +46,7 @@ $(function() {
   // Establish event listener for previous button
   prevBtn.on('click', () => {
     index = Math.max(0, index - 6)
-    loadNext(favourites, index)
+    loadNext(restaurants, index)
   })
 })
 
