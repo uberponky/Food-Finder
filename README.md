@@ -38,7 +38,7 @@ API and Javascript
 KHUMBALANI
 HTML
 
-## Contact link URL to the deployed github repository
+## Contact link URL to the deployed github application
 
 https://uberponky.github.io/Food-Finder/index.html
 
