@@ -22,6 +22,12 @@ None.
 Simply type your location select a cuisine type and press search, it will then load up multiple restaurants that fits your desire.
 There is a favourite feature to help with bookmarking pleasant experiences, this is done by pressing add to favourite button and to access the list is done by pressing the "My favourites" button.
 ![plot](./images/displays.PNG)
+The favourite page.
+![plot](./images/emptyfav.PNG)
+Search results.
+![plot](./images/searchResult.PNG)
+Favourite page now after choosing favourite.
+![plot](./images/myFav.PNG)
 
 ## Credits
 
