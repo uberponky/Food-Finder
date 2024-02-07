@@ -3,8 +3,13 @@ let favourites
 if (favourites = localStorage.getItem('favourites')) favourites = JSON.parse(favourites)
 else favourites = []
 
+// Sanitize null values in array
+favourites = favourites.filter(el => el)
+localStorage.setItem('favourites', JSON.stringify(favourites))
+
 // GLOBAL VARIABLES
-let index = 0  // Used to track position in favourites array
+let index = 0         // Used to track position in favourites array
+let reduceIndex = 0;  // Used to track elements removed from favourites
 
 // AWAIT PAGE LOAD
 $(function() {
@@ -36,6 +41,11 @@ $(function() {
 
 // Load next three restaurants, given a resturant object and starting index
 function loadNext(restaurants, currentIndex) {
+  // Deduct to account for restaurants removed from favourites
+  console.log('reduce'+reduceIndex+' index'+currentIndex)
+  currentIndex = Math.max(0, currentIndex - reduceIndex) 
+  reduceIndex = 0
+
   // Empty existing results
   const resultsContainer = $("#results")
   resultsContainer.empty()
@@ -146,6 +156,9 @@ function removeFromFavourite(e) {
   // Show / Hide buttons
   addBtn.addClass('hidden')
   addedBtn.removeClass('hidden')
+
+  // Track number removed
+  reduceIndex++
 }
 
 // Sanitise array of cuisines
