@@ -54,8 +54,7 @@ function loadNext(restaurants, currentIndex) {
     // Retrieving the URL for the image
     const imgURLFallback = './images/missing-lunch.png'
     let imgURL = restaurant.logo_photos
-    console.log(imgURL.naturalHeight);
-    if ((!imgURL.length) || (imgURL.naturalHeight <= 90)) {
+    if (!imgURL.length) {
       imgURL = imgURLFallback
     }
 
@@ -99,6 +98,11 @@ function loadNext(restaurants, currentIndex) {
   // Add event listeners to buttons
   $('.remove-restaurant-favourite').on('click', (e) => {
     removeFromFavourite(e)
+  })
+
+  // Replace broken images with placeholder
+  $('.card-img-top').on('error', function () {
+    $(this).attr("src", "./images/missing-lunch.png");
   })
 
   // Grab selectors for buttons

@@ -1,8 +1,17 @@
-# food-finder
+# Food Finder
 
 ## Description
 
 A simple web app to find restaurant recommendations
+
+## Table of Contents
+
+* [description of the assignment](#description-of-the-assignment)
+* [acceptance criteria](#acceptance-criteria)
+* [link url to deployed app on github](#link-url-to-deployed-app-on-github)
+* [website Page screenshot link url to github repository](#website-page-screenshot-link-url-to-github-repository)
+* [contact Link url to github repository](#contact-link-url-to-github-repository)
+* [Reference](#Reference)
 
 ## Installation
 
