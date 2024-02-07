@@ -101,6 +101,11 @@ function loadNext(restaurants, currentIndex) {
     removeFromFavourite(e)
   })
 
+  // Replace broken images with placeholder
+  $('.card-img-top').on('error', function () {
+    $(this).attr("src", "./images/missing-lunch.png");
+  })
+
   // Grab selectors for buttons
   const nextBtn = $('#next-btn')
   const prevBtn = $('#prev-btn')
