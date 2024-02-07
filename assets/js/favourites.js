@@ -52,13 +52,20 @@ function loadNext(restaurants, currentIndex) {
     const displayAddress = `${address.street_addr}<br> ${address.city}<br> ${address.state} ${address.zipcode}`
 
     // Retrieving the URL for the image
-    const imgURL = restaurant.logo_photos
-    const imgURLFallback = '/images/restaurant-placeholder-1.jpg'
+    const imgURLFallback = './images/missing-lunch.png'
+    let imgURL = restaurant.logo_photos
+    console.log(imgURL.naturalHeight);
+    if ((!imgURL.length) || (imgURL.naturalHeight <= 90)) {
+      imgURL = imgURLFallback
+    }
 
     // Format data elements
     const cuisines = formatCuisines(restaurant.cuisines)
     const phoneNo = formatPhoneNumber(restaurant.phone_number)
     let price = formatPrice(restaurant.dollar_signs)
+
+    // Grab ID 
+    const id = restaurant["_id"]
 
     // Create DOM element for card
     const card = `
@@ -75,8 +82,8 @@ function loadNext(restaurants, currentIndex) {
           <p class="card-text">${price}</p>
           <h6 class="m-0"><b>Cuisines</b></h6>
           <p class="card-text">${cuisines}</p>
-          <button class="btn restaurant-favourite"data-index="${index}">Remove from Favourites <i class="fa-solid fa-trash"></i></button>
-          <button class="btn restaurant-favourite-added hidden" data-index="${index}">Removed <i class="fa-solid fa-check"></i></button>
+          <button class="btn remove-restaurant-favourite" data-index="${id}">Remove from Favourites <i class="fa-solid fa-trash"></i></button>
+          <button class="btn add-restaurant-favourite hidden" data-index="${id}">Removed <i class="fa-solid fa-check"></i></button>
         </div>
       </div>
     </div>
@@ -90,7 +97,7 @@ function loadNext(restaurants, currentIndex) {
   resultsContainer.append(cards)
 
   // Add event listeners to buttons
-  $('.restaurant-favourite').on('click', (e) => {
+  $('.remove-restaurant-favourite').on('click', (e) => {
     removeFromFavourite(e)
   })
 
@@ -108,8 +115,8 @@ function loadNext(restaurants, currentIndex) {
     noResultsBtn.addClass('hidden')
   }
 
-  // Show previous button if index is higher than 2
-  if (index > 4) {
+  // Show previous button if index is higher than 3
+  if (index > 3) {
     prevBtn.removeClass('hidden')
   } else {
     prevBtn.addClass('hidden')
@@ -120,10 +127,16 @@ function loadNext(restaurants, currentIndex) {
 function removeFromFavourite(e) {
   let addBtn = $(e.target)
   let addedBtn = addBtn.next()
-  let restaurantIndex = addBtn.data('index')
+  let restaurantId = addBtn.data('index')
+
+  // Find index of restaurant in array with matching ID
+  let selectedIndex = favourites.findIndex(restaurant => {
+    return restaurant["_id"] == restaurantId
+  })
 
   // Remove restaurant from local storage
-  // TODO - REMOVE ELEMENT FROM FAVOURITES ARRAY
+  favourites.splice(selectedIndex, 1)
+  
   localStorage.setItem('favourites', JSON.stringify(favourites))
 
   // Show / Hide buttons
@@ -164,4 +177,3 @@ function formatPrice(price) {
   }
   return formattedPrice
 }
-
