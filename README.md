@@ -2,12 +2,12 @@
 
 ## Table of Contents
 
-* [description of the assignment](#description-of-the-assignment)
+* [Description of the assignment](#description-of-the-assignment)
 * [Installation](#Installation)
 * [Usage](#Usage)
 * [Credits](#Credits)
 * [Licenses](#Licenses)
-* [contact Link url to github repository](#contact-link-url-to-github-repository)
+* [Contact Link url to github repository](#contact-link-url-to-github-repository)
 * [Reference](#Reference)
 
 ## Description
