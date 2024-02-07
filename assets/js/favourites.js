@@ -54,8 +54,7 @@ function loadNext(restaurants, currentIndex) {
     // Retrieving the URL for the image
     const imgURLFallback = './images/missing-lunch.png'
     let imgURL = restaurant.logo_photos
-    console.log(imgURL.naturalHeight);
-    if ((!imgURL.length) || (imgURL.naturalHeight <= 90)) {
+    if (!imgURL.length) {
       imgURL = imgURLFallback
     }
 
