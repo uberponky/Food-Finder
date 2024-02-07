@@ -177,8 +177,3 @@ function formatPrice(price) {
   }
   return formattedPrice
 }
-
-
-let testURL = 'https://cdn-img.mealme.ai/2bc160fbc60428963218484fa932d6f3ed3ae0ad/68747470733a2f2f6d656e752d696d616765732d7374617469632e736b69707468656469736865732e636f6d2f696d616765732f726573697a65642f6d6f62696c652d64306333646136383261363064636430653063352e706e67'
-let testSub = testURL.includes('cdn-img.mealme.ai')
-console.log(testSub)

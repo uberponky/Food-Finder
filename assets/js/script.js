@@ -379,3 +379,4 @@ function formatCuisines(cuisines) {
   cuisines = cuisines.slice(0, 7)                  // Keep first 7 elements
   return cuisines.join(", ")                       // Return as string
 }
+

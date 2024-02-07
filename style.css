@@ -1,0 +1,146 @@
+/* General */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #0A2830;
+  --accent: #FF896D;
+  --accent-dark: #ff7957;
+}
+
+body {
+  font-family: 'Lexend', sans-serif;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Spacing */
+.col {
+  text-align: right;
+}
+
+.pull-right {
+  margin: 0 0 0 auto;
+}
+
+.vertical-align-top {
+  vertical-align: top
+}
+
+.spaceR {
+  margin-right: 50px;
+}
+
+.spaceL {
+  margin-left: 50px;
+}
+
+.spaceLL {
+  margin-left: 300px;
+}
+
+.spaceLR {
+  margin-right: 300px;
+}
+
+/* Colours */
+.whiteT {
+  color: aliceblue;
+}
+
+.orange {
+  color: orange
+}
+
+.spaceSi {
+  margin-left: 70px;
+    margin-right: 70px;
+}
+
+.simplify {
+  color: black;
+  font-size: 20px;
+}
+
+.bg-dark-blue {
+  background-color: var(--primary);
+}
+
+/* Buttons */
+.btn {
+  background-color: var(--accent);
+  color: white;
+}
+
+.btn:hover{
+ background-color: var(--accent-dark);
+ color: white
+}
+
+.like {
+  color: white;
+  background-color: var(--accent);
+  font-size: 1rem;
+}
+
+.btn-grey {
+  background-color: grey;
+  cursor: default!important;
+}
+
+.btn-grey:hover {
+  background-color: grey;
+}
+
+/* Labels */
+label {
+  font-size: 0.9rem;
+}
+
+/* Cards */
+.card {
+  width: 33%;
+}
+
+.address {
+  font-size: 0.8rem;
+}
+
+/* Search History */
+#search-history-container {
+  position: relative;
+  z-index: 1000;
+}
+
+#search-history-results {
+  position: absolute;
+  width: 100%;
+  margin: 0.5rem 0;
+  background: rgb(245, 245, 245)
+}
+
+#search-history-results ul {
+  list-style: none;
+  padding: 0;
+}
+
+#search-history-results i {
+  padding-right: .2rem;
+}
+
+#search-history-results li {
+  cursor: pointer;
+  padding: 0.3rem 0.5rem 0.2rem 0.5rem;
+  border-radius: 5px;
+}
+
+#search-history-results li:hover {
+  background-color: rgba(0,0,0,0.05);
+}
