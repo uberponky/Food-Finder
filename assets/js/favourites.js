@@ -164,3 +164,4 @@ function formatPrice(price) {
   }
   return formattedPrice
 }
+
