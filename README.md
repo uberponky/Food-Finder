@@ -5,7 +5,6 @@
 * [Description of the assignment](#description-of-the-assignment)
 * [Installation](#Installation)
 * [Grading Requirements](Grading-Requirements)
-* [Technical-Acceptance-Criteria](Technical-Acceptance-Criteria)
 * [Concept](Concept)
 * [Deployment](Deployment)
 * [Repository-Quality](Repository-Quality)
