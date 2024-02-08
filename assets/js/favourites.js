@@ -42,7 +42,6 @@ $(function() {
 // Load next three restaurants, given a resturant object and starting index
 function loadNext(restaurants, currentIndex) {
   // Deduct to account for restaurants removed from favourites
-  console.log('reduce'+reduceIndex+' index'+currentIndex)
   currentIndex = Math.max(0, currentIndex - reduceIndex) 
   reduceIndex = 0
 
@@ -194,3 +193,4 @@ function formatPrice(price) {
   }
   return formattedPrice
 }
+
