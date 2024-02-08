@@ -265,7 +265,7 @@ function loadNext(restaurants, currentIndex) {
     // Retrieving the URL for the image
     const imgURLFallback = './images/missing-lunch.png'
     let imgURL = restaurant.logo_photos
-    if ((!imgURL.length) || (imgURL.includes('cdn-img.mealme.ai'))) {
+    if ((!imgURL.length) || (imgURL.naturalHeight <= 90)) {
       imgURL = imgURLFallback
     }
     
@@ -277,7 +277,7 @@ function loadNext(restaurants, currentIndex) {
 
     // Create DOM element for card
     const card = `
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-md-4 my-2">
       <div class="card p-0 text-center">
         <img src="${imgURL}" class="card-img-top" alt="..." style="object-fit: cover; height: 10rem">
         <div class="card-body">
@@ -308,6 +308,12 @@ function loadNext(restaurants, currentIndex) {
   $('.restaurant-favourite').on('click', (e) => {
     addToFavourites(e)
   })
+
+  // Replace broken images with placeholder
+  $('.card-img-top').on('error', function () {
+    $(this).attr("src", "./images/missing-lunch.png");
+  })
+
 
   // Grab selectors for buttons
   const nextBtn = $('#next-btn')
