@@ -19,7 +19,7 @@
 
 ## Description
 
-A simple web app to find restaurant recommendations
+The following application is a simple web application which is used to find restaurant recommendations. The web application is known as food finder and this application will be very beneficial with regards to integrating data received from multiple server-side API requests. During the project we will collaboratively learn about agile development methodologies to help each individual work as a team. You'll implement feature and bug fixes using Git branch workflow and pull requests.
 
 ## Installation
 
