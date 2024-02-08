@@ -4,17 +4,10 @@
 
 * [Description of the assignment](#description-of-the-assignment)
 * [Installation](#Installation)
-* [Grading Requirements](#Grading-Requirements)
-* [Concept](#Concept)
-* [Deployment](#Deployment)
-* [Repository-Quality](#Repository-Quality)
-* [Application-Quality](#Application-Quality)
 * [Usage](#Usage)
+* [Link to the Site](#Link-URL-to-deployed-app-on-GitHub)
 * [Credits](#Credits)
-* [Licenses](#Licenses)
-* [Link URL to deployed app on GitHub](#Link-URL-to-deployed-app-on-GitHub)
-* [Contact-link URL to GitHub repository](#Contact-link-URL-to-GitHub-repository)
-* [Licence](#Licence)
+* [License](#License)
 
 ## Description
 
@@ -22,121 +15,69 @@ The following application is a simple design which is used to find restaurant re
 
 ## Installation
 
-None.
+No particular installation requirements. Web page can be viewed using Chrome, Firefox, Safari or most other standard browser, using "Inspect" Console to see the output 
+The "Application" tab in Inspect can be used to see the restaurants which have been saved to LocalStorage. "Network" can display the API calls
 
-## Grading Requirements
-
-If a project submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
-
-A repository that has no code
-
-A repository that includes a unique name but nothing else
-
-A repository that includes only a README file but nothing else
-
-A repository that only includes starter code
-
-This project is graded based on the following criteria:
-
-### Technical Acceptance Criteria: 25%
-
-Technical Acceptance Criteria: 25%
-Satisfies the following code requirements:
-
-Application uses at least two server-side APIsLinks to an external site..
-
-Application uses client-side storage to store persistent data.
-
-Application doesn't use JS alerts, prompts, or confirms (uses modals instead).
-
-Application uses Bootstrap.
-
-Application is interactive (accepts and responds to user input).
-
-### Concept 10%
-
-Application should be a unique and novel idea.
-
-Your group should clearly and concisely articulate your project idea.
-
-### Deployment: 20%
-
-Application deployed at live URL and loads with no errors.
-
-Application GitHub URL submitted
-
-### Repository Quality: 10%
-
-Repository has a unique name.
-
-Repository follows best practices for file structure and naming conventions.
-
-Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-Repository contains multiple descriptive commit messages.
-
-Repository contains a quality README file with description, screenshot, and link to deployed application.
-
-### Application Quality: 15%
-
-Application user experience is intuitive and easy to navigate.
-
-Application user interface style is clean and polished.
-
-Application is responsive.
-
-### Presentation 10%
-
-Your group should present using Powerpoint or a similar presentation software.
-
-Every group member should speak during the presentation.
-
-Your presentation should follow the Project Presentation TemplateLinks to an external site..
-
-### Collaboration 10%
-
-There are no major disparities in the number of GitHub contributions between group members.
-
-### How to Submit Your Interactive Front-End Project
-
-Each member of your group is required to submit the following for review:
-
-The URL of the deployed application.
-
-The URL of the GitHub repository, with a unique name and a README describing the project.
 
 ## Usage
 
 Simply type your location select a cuisine type and press search, it will then load up multiple restaurants that fits your desire.
 There is a favourite feature to help with bookmarking pleasant experiences, this is done by pressing add to favourite button and to access the list is done by pressing the "My favourites" button.
-![plot](./images/displays.PNG)
+
+Screenshots of the site on various devices can be seen here:
+
+![screenshot](./images/displays.PNG)
+
+
+## Link to Site
+
+This site can be accessed on GitPages [HERE](https://uberponky.github.io/Food-Finder/index.html)
+
 
 ## Credits
 
-RORY
+Shout out to the teaching team at EdX and fellow students for help and collaboration.
+
+The Project Group are: 
+
+Rory Simmonds:
 Jedi of Javascript
 
-DENNIS
-Html/CSS
+Dennis Vaca Cuber:
+HTML/CSS
 
-MANDY
+Mandy Miller:
 API and Javascript
 
-KHUMBALANI
-HTML
+Khumbalani Jubane:
+HTML/CSS
 
-## Link URL to deployed app on GitHub
-
-https://github.com/uberponky/Food-Finder/edit/main/README.md
-
-## Contact-link URL to GitHub repository
-
-https://uberponky.github.io/Food-Finder/index.html
 
 ## License
 
-Please refer to the LICENSE in the repo.
+MIT License
 
-### References 
+Copyright (c) 2024 Food Finder
 
-https://bootcampspot.instructure.com/courses/5651/assignments/67077?module_item_id=1145768
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+
